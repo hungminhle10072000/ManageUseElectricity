@@ -1,67 +1,55 @@
 package com.hdh.model;
 
 import java.util.Date;
+import java.util.List;
 
 public class NoteBook {
 
-    private long id;
+    private Date dateWrite;
 
-    private Date dateWite;
+    private int idElectricMeter;
 
-    private double indexNew;
+    private double index;
 
-    private double indexOld;
+    private List<ElectricMeter> electricMeters;
 
-    private ElectricMeter electricMeter;
-
-    public NoteBook(long id, Date dateWite, double indexNew, double indexOld, ElectricMeter electricMeter) {
-        this.id = id;
-        this.dateWite = dateWite;
-        this.indexNew = indexNew;
-        this.indexOld = indexOld;
-        this.electricMeter = electricMeter;
+    public NoteBook(Date dateWrite, int idElectricMeter, double index) {
+        this.dateWrite = dateWrite;
+        this.idElectricMeter = idElectricMeter;
+        this.index = index;
     }
-
     public NoteBook() {
     }
 
-    public long getId() {
-        return id;
+    public Date getDateWrite() {
+        return dateWrite;
     }
 
-    public Date getDateWite() {
-        return dateWite;
+    public void setDateWrite(Date dateWrite) {
+        this.dateWrite = dateWrite;
     }
 
-    public double getIndexNew() {
-        return indexNew;
+    public int getIdElectricMeter() {
+        return idElectricMeter;
     }
 
-    public double getIndexOld() {
-        return indexOld;
+    public void setIdElectricMeter(int idElectricMeter) {
+        this.idElectricMeter = idElectricMeter;
     }
 
-    public ElectricMeter getElectricMeter() {
-        return electricMeter;
+    public double getIndex() {
+        return index;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setIndex(double index) {
+        this.index = index;
     }
 
-    public void setDateWite(Date dateWite) {
-        this.dateWite = dateWite;
+    public List<ElectricMeter> getElectricMeters() {
+        return electricMeters;
     }
 
-    public void setIndexNew(double indexNew) {
-        this.indexNew = indexNew;
-    }
-
-    public void setIndexOld(double indexOld) {
-        this.indexOld = indexOld;
-    }
-
-    public void setElectricMeter(ElectricMeter electricMeter) {
-        this.electricMeter = electricMeter;
+    public void setElectricMeters(List<ElectricMeter> electricMeters) {
+        this.electricMeters = electricMeters;
     }
 }

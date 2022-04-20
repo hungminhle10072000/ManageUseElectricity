@@ -6,18 +6,12 @@ public class ElectricMeter {
 
     private String typeElectricMeter;
 
-    private double multiplicationFactor;
-
     private Contract contract;
 
-    public ElectricMeter(long id, String typeElectricMeter, double multiplicationFactor, Contract contract) {
+    public ElectricMeter(long id, String typeElectricMeter, Contract contract) {
         this.id = id;
         this.typeElectricMeter = typeElectricMeter;
-        this.multiplicationFactor = multiplicationFactor;
         this.contract = contract;
-    }
-
-    public ElectricMeter() {
     }
 
     public long getId() {
@@ -34,14 +28,6 @@ public class ElectricMeter {
 
     public void setTypeElectricMeter(String typeElectricMeter) {
         this.typeElectricMeter = typeElectricMeter;
-    }
-
-    public double getMultiplicationFactor() {
-        return multiplicationFactor;
-    }
-
-    public void setMultiplicationFactor(double multiplicationFactor) {
-        this.multiplicationFactor = multiplicationFactor;
     }
 
     public Contract getContract() {

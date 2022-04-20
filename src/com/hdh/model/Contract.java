@@ -3,7 +3,6 @@ package com.hdh.model;
 import java.util.Date;
 
 public class Contract {
-
     private long id;
 
     private String content;

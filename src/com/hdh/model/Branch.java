@@ -1,27 +1,34 @@
 package com.hdh.model;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 public class Branch {
 
-    private long id;
-
+    private int id;
     private String nameBranch;
-
     private String address;
 
-    public Branch(long id, String nameBranch, String address) {
+    private List<Contract> contractList;
+
+    public Branch(int id, String nameBranch, String address, List<Contract> contractList) {
         this.id = id;
+        this.nameBranch = nameBranch;
+        this.address = address;
+        this.contractList = contractList;
+    }
+
+    public Branch(String nameBranch, String address) {
+
         this.nameBranch = nameBranch;
         this.address = address;
     }
 
-    public Branch() {
-    }
-
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -39,5 +46,13 @@ public class Branch {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public List<Contract> getContractList() {
+        return contractList;
+    }
+
+    public void setContractList(List<Contract> contractList) {
+        this.contractList = contractList;
     }
 }

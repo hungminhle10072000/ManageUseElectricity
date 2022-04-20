@@ -1,7 +1,6 @@
 package com.hdh.model;
 
 public class FormUse {
-
     private String nameForm;
 
     private double unitPrice;
