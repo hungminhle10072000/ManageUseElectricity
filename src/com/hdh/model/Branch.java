@@ -13,12 +13,11 @@ public class Branch implements BaseModel {
 
     private List<Contract> contractList;
 
-    static Scanner scanner = new Scanner(System.in);
-
     public Branch() {
     }
 
     public void inputInfoBranch() {
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Request enter nameBranch: ");
         nameBranch = scanner.nextLine();
         System.out.println("Request enter address: ");

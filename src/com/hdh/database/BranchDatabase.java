@@ -1,6 +1,4 @@
-package database;
-
-import com.hdh.model.Branch;
+package com.hdh.database;
 
 public class BranchDatabase extends  BaseDatabase{
 
