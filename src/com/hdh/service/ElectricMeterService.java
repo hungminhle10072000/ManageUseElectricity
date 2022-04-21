@@ -13,17 +13,23 @@ public class ElectricMeterService {
         try {
             System.out.print("Request enter id of contract: ");
             int idContract = scanner.nextInt();
+            Contract contract;
+            do {
+                contract = (Contract) InitDatabaseService.contractDatabase.findById(idContract);
+                if (contract == null) {
+                    System.out.println("No exists contract with id: " + idContract);
+                    System.out.print("Request enter id of contract: ");
+                    idContract = scanner.nextInt();
+                } else {
+                    System.out.print("Request enter typeElectricMeter: ");
+                    scanner.nextLine();
+                    String typeElectricMeter = scanner.nextLine();
+                    ElectricMeter electricMeterAdd = new ElectricMeter(typeElectricMeter, contract);
+                    InitDatabaseService.electricMeterDatabase.create(electricMeterAdd);
+                    System.out.println("Add electric meter success");
+                }
+            } while (contract == null);
 
-            System.out.print("Request enter typeElectricMeter: ");
-            scanner.nextLine();
-            String typeElectricMeter = scanner.nextLine();
-
-            Contract contract = (Contract) InitDatabaseService.contractDatabase.findById(idContract);
-
-
-            ElectricMeter electricMeterAdd = new ElectricMeter(typeElectricMeter, contract);
-            InitDatabaseService.electricMeterDatabase.create(electricMeterAdd);
-            System.out.println("Add electric meter success");
         } catch (Exception e) {
             System.out.println("Add Electric Meter failed");
         }
@@ -61,6 +67,48 @@ public class ElectricMeterService {
             }
         } catch (Exception e) {
             System.out.println("Delete failed");
+        }
+    }
+
+    public void updateElectricMeter() {
+        System.out.println("Enter id you want update: ");
+        int id = scanner.nextInt();
+        ElectricMeter electricMeter = (ElectricMeter) InitDatabaseService.electricMeterDatabase.findById(id);
+        if (electricMeter == null) {
+            System.out.println("No exits electric meter with id: " + id);
+        } else {
+            System.out.println("Value of electric meter before update: ");
+            System.out.println(electricMeter);
+
+            System.out.println("Input the data of typeElectricMeter if you want to update or enter if you want to skip: ");
+            scanner.nextLine();
+            String typeElectricMeter = scanner.nextLine();
+
+            System.out.println("Input the data of idContract if you want to update or input [-1] if you want to skip: ");
+            int idContract = scanner.nextInt();
+            Contract contract = null;
+            if (id != -1) {
+                do {
+                    if (idContract == -1) {
+                        break;
+                    }
+                    contract = (Contract) InitDatabaseService.contractDatabase.findById(idContract);
+                    if (contract == null) {
+                        System.out.println("No exists contract with id: " + idContract);
+                        System.out.println("Input the data of idContract if you want to update or input [-1] if you want to skip: ");
+                        idContract = scanner.nextInt();
+                    }
+                } while (contract == null);
+            }
+
+
+            if (!typeElectricMeter.isEmpty()) electricMeter.setTypeElectricMeter(typeElectricMeter);
+            if (!(contract == null)) electricMeter.setContract(contract);
+
+            InitDatabaseService.electricMeterDatabase.getMaps().put(id, electricMeter);
+            System.out.println("Value of electric meter after update: ");
+            System.out.println(electricMeter);
+
         }
     }
 

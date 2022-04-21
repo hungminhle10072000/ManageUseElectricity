@@ -73,4 +73,30 @@ public class CustomerService {
         }
     }
 
+    public void updateCustomer() {
+        System.out.println("Enter id of customer want update: ");
+        int id = scanner.nextInt();
+        Customer customerUpdate = (Customer) InitDatabaseService.customerDatabase.findById(id);
+        if (customerUpdate == null) {
+            System.out.println("No found customer with id: " + id);
+        } else {
+            System.out.println("Value of customer before update: ");
+            System.out.println(customerUpdate);
+            System.out.println("Input the data if you want to update, input value 0 or enter if you want to skip: ");
+            System.out.println("Enter value of name: ");
+            scanner.nextLine();
+            String name = scanner.nextLine();
+            System.out.println("Enter value of address: ");
+            String address = scanner.nextLine();
+            System.out.println("Enter value of phoneNumber: ");
+            String phoneNumber = scanner.nextLine();
+            if (!name.isEmpty()) customerUpdate.setName(name);
+            if (!address.isEmpty()) customerUpdate.setAddress(address);
+            if (!phoneNumber.isEmpty()) customerUpdate.setPhoneNumber(phoneNumber);
+            InitDatabaseService.customerDatabase.getMaps().put(id, customerUpdate);
+            System.out.println("Value of customer after update: ");
+            System.out.println(customerUpdate);
+        }
+    }
+
 }

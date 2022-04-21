@@ -13,6 +13,12 @@ public class ElectricMeter implements BaseModel{
         this.contract = contract;
     }
 
+    public ElectricMeter(int id, String typeElectricMeter, Contract contract) {
+        this.id = id;
+        this.typeElectricMeter = typeElectricMeter;
+        this.contract = contract;
+    }
+
     @Override
     public String toString() {
         return "ElectricMeter{" +

@@ -165,6 +165,7 @@ public class Main {
                     customerService.deleteCustomerById();
                     break;
                 case 4:
+                    customerService.updateCustomer();
                     break;
                 case 5:
                     customerService.checkInfoCustomer();
@@ -247,6 +248,9 @@ public class Main {
                     break;
                 case 3:
                     electricMeterService.deleteElectricMeter();
+                    break;
+                case 4:
+                    electricMeterService.updateElectricMeter();
                     break;
                 case 5:
                     electricMeterService.findInfoElectricMeter();

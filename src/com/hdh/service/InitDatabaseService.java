@@ -34,6 +34,9 @@ public class InitDatabaseService {
         contractDatabase.getMaps().put(2, new Contract(2, "Sign contract times 2", c1.getTime(), (Branch) branchDatabase.getMaps().get(2),
                 (Customer) customerDatabase.getMaps().get(2), (FormUse) formUseDatabase.getMaps().get(2)));
 
+        electricMeterDatabase.getMaps().put(1, new ElectricMeter(1,"Điện 1 chiều", (Contract) contractDatabase.getMaps().get(1)));
+        electricMeterDatabase.getMaps().put(2, new ElectricMeter(2,"Điện 2 chiều", (Contract) contractDatabase.getMaps().get(2)));
+
     }
 
 }
