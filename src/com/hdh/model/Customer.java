@@ -1,8 +1,8 @@
 package com.hdh.model;
 
-public class Customer {
+public class Customer implements BaseModel {
 
-    private long id;
+    private int id;
 
     private String name;
 
@@ -10,14 +10,27 @@ public class Customer {
 
     private String phoneNumber;
 
-    public Customer(long id, String name, String address, String phoneNumber) {
+    public Customer(String name, String address, String phoneNumber) {
+        this.name = name;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Customer(int id, String name, String address, String phoneNumber) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.phoneNumber = phoneNumber;
     }
 
-    public Customer() {
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                '}';
     }
 
     public long getId() {
@@ -36,7 +49,7 @@ public class Customer {
         return phoneNumber;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

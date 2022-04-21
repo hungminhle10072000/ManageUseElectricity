@@ -2,8 +2,8 @@ package com.hdh.model;
 
 import java.util.Date;
 
-public class Contract {
-    private long id;
+public class Contract implements BaseModel {
+    private int id;
 
     private String content;
 
@@ -15,8 +15,7 @@ public class Contract {
 
     private FormUse formUse;
 
-    public Contract(long id, String content, Date dateSign, Branch branch, Customer customer, FormUse formUse) {
-        this.id = id;
+    public Contract(String content, Date dateSign, Branch branch, Customer customer, FormUse formUse) {
         this.content = content;
         this.dateSign = dateSign;
         this.branch = branch;
@@ -27,11 +26,23 @@ public class Contract {
     public Contract() {
     }
 
+    @Override
+    public String toString() {
+        return "Contract{" +
+                "id=" + id +
+                ", content='" + content + '\'' +
+                ", dateSign='" + dateSign + '\'' +
+                ", name branch='" + branch.getNameBranch() + '\'' +
+                ", name customer='" + customer.getName() + '\'' +
+                ", name form Use='" + formUse.getNameForm() + '\'' +
+                '}';
+    }
+
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

@@ -24,7 +24,7 @@ public class Branch implements BaseModel {
         address = scanner.nextLine();
     }
 
-    public Branch(int id, String nameBranch, String address, List<Contract> contractList) {
+    public Branch(int id, String nameBranch, String address) {
         this.id = id;
         this.nameBranch = nameBranch;
         this.address = address;

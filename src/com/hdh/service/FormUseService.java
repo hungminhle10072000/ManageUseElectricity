@@ -24,9 +24,9 @@ public class FormUseService {
         System.out.println("Enter id of form use you want update: ");
         int id = scanner.nextInt();
         FormUse formUseUpdate = (FormUse) InitDatabaseService.formUseDatabase.findById(id);
-        if(formUseUpdate == null){
+        if (formUseUpdate == null) {
             System.out.println("No form use with id: " + id);
-        } else  {
+        } else {
             System.out.println("Value of form use befor update: ");
             System.out.println(formUseUpdate);
             System.out.println("Input the data if you want to update, enter or input value 0 if you want to skip: ");
@@ -36,11 +36,28 @@ public class FormUseService {
             System.out.println("Enter value of unitPrice: ");
             Double unitPrice = scanner.nextDouble();
             System.out.println(unitPrice);
-            if(!nameForm.isEmpty()) formUseUpdate.setNameForm(nameForm);
-            if(!unitPrice.equals(0.0)) formUseUpdate.setUnitPrice(unitPrice);
+            if (!nameForm.isEmpty()) formUseUpdate.setNameForm(nameForm);
+            if (!unitPrice.equals(0.0)) formUseUpdate.setUnitPrice(unitPrice);
             InitDatabaseService.formUseDatabase.getMaps().put(id, formUseUpdate);
             System.out.println("Value of form use after update: ");
             System.out.println(formUseUpdate);
         }
     }
+
+    public void findFormUse() {
+        try {
+            System.out.println("Request enter id of form use yow want find: ");
+            int id = scanner.nextInt();
+            FormUse formUse = (FormUse) InitDatabaseService.formUseDatabase.findById(id);
+            if (formUse == null) {
+                System.out.println("Not found form use with id: " + id);
+            } else {
+                System.out.println("Information of form use: " + formUse);
+            }
+        } catch (Exception e) {
+            System.out.println("Find failed");
+        }
+    }
+
+
 }

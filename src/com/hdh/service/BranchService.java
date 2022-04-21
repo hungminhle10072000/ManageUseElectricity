@@ -25,7 +25,7 @@ public class BranchService {
         System.out.println("Enter id you want update: ");
         int id = scanner.nextInt();
         Branch branchUpdate = (Branch) InitDatabaseService.branchDatabase.findById(id);
-        if(branchUpdate == null){
+        if (branchUpdate == null) {
             System.out.println("No branch with id: " + id);
         } else {
             System.out.println("Value of branch before update: ");
@@ -43,4 +43,21 @@ public class BranchService {
             System.out.println(branchUpdate);
         }
     }
+
+    public void findBranchbyId() {
+        try {
+            System.out.println("Request enter id of branch yow want find: ");
+            int id = scanner.nextInt();
+            Branch branch = (Branch) InitDatabaseService.branchDatabase.findById(id);
+            if (branch == null) {
+                System.out.println("Not found branch with id: " + id);
+            } else {
+                System.out.println("Information of branch: " + branch);
+            }
+        } catch (Exception e) {
+            System.out.println("Find failed");
+        }
+    }
+
+
 }

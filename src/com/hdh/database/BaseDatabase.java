@@ -5,17 +5,17 @@ import com.hdh.model.BaseModel;
 import java.util.HashMap;
 import java.util.Map;
 
-public class BaseDatabase <T extends BaseModel>{
+public class BaseDatabase {
 
-    private Map<Integer, T> maps = new HashMap<Integer, T>();
+    private Map<Integer, BaseModel> maps = new HashMap<Integer, BaseModel>();
 
-    public T create(T t){
+    public BaseModel create(BaseModel t){
             t.setId(maps.size()+1);
             maps.put(maps.size()+1, t);
             return t;
     }
 
-    public T findById(int id){
+    public BaseModel findById(int id){
             return maps.get(id);
     }
 
@@ -23,15 +23,17 @@ public class BaseDatabase <T extends BaseModel>{
         maps.remove(id);
     }
 
-    public Map<Integer, T> getAll() {
+    public Map<Integer, BaseModel> getAll() {
         return maps;
     }
 
-    public Map<Integer, T> getMaps() {
+    public Map<Integer, BaseModel> getMaps() {
         return maps;
     }
 
-    public void setMaps(Map<Integer, T> maps) {
+    public void setMaps(Map<Integer, BaseModel> maps) {
         this.maps = maps;
     }
+
+
 }
