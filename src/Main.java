@@ -38,6 +38,8 @@ public class Main {
                 case 3:
                     branchService.deleteBranchById();
                     break;
+                case 4:
+                    branchService.updateBranch();
                 case 5:
                     InitDatabaseService.formUseDatabase.getAll().forEach((key, value) -> System.out.println(value.toString()));
                     break;
@@ -46,6 +48,9 @@ public class Main {
                     break;
                 case 7:
                     formUseService.deleteFormUseById();
+                    break;
+                case 8:
+                    formUseService.updateFormUse();
                     break;
                 case 9:
                     System.out.println("Log out");
