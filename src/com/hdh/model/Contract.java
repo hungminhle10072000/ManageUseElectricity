@@ -26,6 +26,15 @@ public class Contract implements BaseModel {
     public Contract() {
     }
 
+    public Contract(int id, String content, Date dateSign, Branch branch, Customer customer, FormUse formUse) {
+        this.id = id;
+        this.content = content;
+        this.dateSign = dateSign;
+        this.branch = branch;
+        this.customer = customer;
+        this.formUse = formUse;
+    }
+
     @Override
     public String toString() {
         return "Contract{" +

@@ -1,24 +1,32 @@
 package com.hdh.model;
 
-public class ElectricMeter {
+public class ElectricMeter implements BaseModel{
 
-    private long id;
+    private int id;
 
     private String typeElectricMeter;
 
     private Contract contract;
 
-    public ElectricMeter(long id, String typeElectricMeter, Contract contract) {
-        this.id = id;
+    public ElectricMeter(String typeElectricMeter, Contract contract) {
         this.typeElectricMeter = typeElectricMeter;
         this.contract = contract;
+    }
+
+    @Override
+    public String toString() {
+        return "ElectricMeter{" +
+                "id=" + id +
+                ", typeElectricMeter='" + typeElectricMeter + '\'' +
+                ", contract=" + contract.toString() +
+                '}';
     }
 
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

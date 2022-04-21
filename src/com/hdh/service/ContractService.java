@@ -61,4 +61,20 @@ public class ContractService {
         }
     }
 
+    public void deleteContract() {
+        try {
+            System.out.print("Request enter id of contract want delete: ");
+            int idDelete = scanner.nextInt();
+            Contract contractDelete = (Contract) InitDatabaseService.contractDatabase.findById(idDelete);
+            if (contractDelete != null) {
+                InitDatabaseService.contractDatabase.deleteById(idDelete);
+                System.out.println("Delete success");
+            } else {
+                System.out.println("Not found contract with id: " + idDelete);
+            }
+        } catch (Exception e) {
+            System.out.println("Delete failed");
+        }
+    }
+
 }
