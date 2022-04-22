@@ -15,9 +15,19 @@ public class FormUseService {
     }
 
     public void deleteFormUseById() {
-        System.out.print("Request enter id of form use want delete: ");
-        int idDelete = scanner.nextInt();
-        InitDatabaseService.formUseDatabase.deleteById(idDelete);
+        try {
+            System.out.print("Request enter id of form use want delete: ");
+            int idDelete = scanner.nextInt();
+            FormUse formUseDelete = (FormUse) InitDatabaseService.formUseDatabase.findById(idDelete);
+            if (formUseDelete != null) {
+                InitDatabaseService.formUseDatabase.deleteById(idDelete);
+                System.out.println("Delete success");
+            } else {
+                System.out.println("Not found form use with id: " + idDelete);
+            }
+        } catch (Exception e) {
+            System.out.println("Delete failed");
+        }
     }
 
     public void updateFormUse() {

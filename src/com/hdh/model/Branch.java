@@ -1,8 +1,4 @@
 package com.hdh.model;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 public class Branch implements BaseModel {
@@ -10,8 +6,6 @@ public class Branch implements BaseModel {
     private int id;
     private String nameBranch;
     private String address;
-
-    private List<Contract> contractList;
 
     public Branch() {
     }
@@ -28,11 +22,9 @@ public class Branch implements BaseModel {
         this.id = id;
         this.nameBranch = nameBranch;
         this.address = address;
-        this.contractList = contractList;
     }
 
     public Branch(String nameBranch, String address) {
-
         this.nameBranch = nameBranch;
         this.address = address;
     }
@@ -59,14 +51,6 @@ public class Branch implements BaseModel {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public List<Contract> getContractList() {
-        return contractList;
-    }
-
-    public void setContractList(List<Contract> contractList) {
-        this.contractList = contractList;
     }
 
     @Override

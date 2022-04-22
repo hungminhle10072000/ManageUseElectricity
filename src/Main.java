@@ -28,6 +28,7 @@ public class Main {
             System.out.print("Insert selection: ");
             int chooseInt = scanner.nextInt();
 
+
             switch (chooseInt) {
                 case 1:
                     return main.menuBranch(main);
@@ -67,6 +68,7 @@ public class Main {
                             " ------- Func 6:  Go back\n ");
             System.out.print("Insert selection: ");
             selection = scanner.nextInt();
+
             System.out.println("\n--------------------------------------------------------------------");
             switch (selection) {
                 case 1:
@@ -208,6 +210,7 @@ public class Main {
                     contractService.deleteContract();
                     break;
                 case 4:
+                    contractService.updateContract();
                     break;
                 case 5:
                     contractService.findInfoContract();

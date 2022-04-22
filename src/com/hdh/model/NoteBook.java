@@ -5,19 +5,51 @@ import java.util.List;
 
 public class NoteBook {
 
-    private Date dateWrite;
 
-    private int idElectricMeter;
+//    private int idElectricMeter;
+
+
+
+    /*    private List<ElectricMeter> electricMeters;*/
+
+
+//    public int getIdElectricMeter() {
+//        return idElectricMeter;
+//    }
+
+//    public void setIdElectricMeter(int idElectricMeter) {
+//        this.idElectricMeter = idElectricMeter;
+//    }
+
+
+//    public List<ElectricMeter> getElectricMeters() {
+//        return electricMeters;
+//    }
+
+//    public void setElectricMeters(List<ElectricMeter> electricMeters) {
+//        this.electricMeters = electricMeters;
+//    }
+
 
     private double index;
 
-    private List<ElectricMeter> electricMeters;
+    private ElectricMeter electricMeter;
+    private Date dateWrite;
 
-    public NoteBook(Date dateWrite, int idElectricMeter, double index) {
-        this.dateWrite = dateWrite;
-        this.idElectricMeter = idElectricMeter;
+    public NoteBook(double index, ElectricMeter electricMeter, Date dateWrite) {
         this.index = index;
+        this.electricMeter = electricMeter;
+        this.dateWrite = dateWrite;
     }
+
+    public ElectricMeter getElectricMeter() {
+        return electricMeter;
+    }
+
+    public void setElectricMeter(ElectricMeter electricMeter) {
+        this.electricMeter = electricMeter;
+    }
+
     public NoteBook() {
     }
 
@@ -29,13 +61,6 @@ public class NoteBook {
         this.dateWrite = dateWrite;
     }
 
-    public int getIdElectricMeter() {
-        return idElectricMeter;
-    }
-
-    public void setIdElectricMeter(int idElectricMeter) {
-        this.idElectricMeter = idElectricMeter;
-    }
 
     public double getIndex() {
         return index;
@@ -45,11 +70,5 @@ public class NoteBook {
         this.index = index;
     }
 
-    public List<ElectricMeter> getElectricMeters() {
-        return electricMeters;
-    }
 
-    public void setElectricMeters(List<ElectricMeter> electricMeters) {
-        this.electricMeters = electricMeters;
-    }
 }
