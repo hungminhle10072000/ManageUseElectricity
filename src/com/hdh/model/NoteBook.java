@@ -70,5 +70,12 @@ public class NoteBook {
         this.index = index;
     }
 
-
+    @Override
+    public String toString() {
+        return "NoteBook{" +
+                "index=" + index +
+                ", idElectricMeter=" + electricMeter.getId() +
+                ", dateWrite=" + dateWrite +
+                '}';
+    }
 }

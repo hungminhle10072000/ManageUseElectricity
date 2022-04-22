@@ -26,6 +26,7 @@ public class ElectricMeterService {
                     String typeElectricMeter = scanner.nextLine();
                     ElectricMeter electricMeterAdd = new ElectricMeter(typeElectricMeter, contract);
                     InitDatabaseService.electricMeterDatabase.create(electricMeterAdd);
+                    NoteBookService.autoAdd(electricMeterAdd);
                     System.out.println("Add electric meter success");
                 }
             } while (contract == null);
@@ -109,6 +110,20 @@ public class ElectricMeterService {
             System.out.println("Value of electric meter after update: ");
             System.out.println(electricMeter);
 
+        }
+    }
+
+    public void findElectricMeterByType() {
+        Scanner scanner = new Scanner(System.in);
+        try {
+            System.out.print("Request enter type of ElectricMeter you want find: ");
+            String typeElectric = scanner.nextLine();
+            InitDatabaseService.electricMeterDatabase.getMaps().forEach((key, value) -> {
+                ElectricMeter electricMeter = (ElectricMeter) value;
+                if (electricMeter.getTypeElectricMeter().equals(typeElectric)) System.out.println(electricMeter);
+            });
+        } catch (Exception e) {
+            System.out.println("Find failed");
         }
     }
 

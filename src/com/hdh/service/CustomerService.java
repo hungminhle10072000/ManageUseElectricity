@@ -99,4 +99,18 @@ public class CustomerService {
         }
     }
 
+    public void findCustomerByName() {
+        Scanner scanner = new Scanner(System.in);
+        try {
+            System.out.print("Request enter name of customer you want find: ");
+            String nameCustomer = scanner.nextLine();
+            InitDatabaseService.customerDatabase.getMaps().forEach((key, value) -> {
+                Customer customer = (Customer) value;
+                if (customer.getName().equals(nameCustomer.trim())) System.out.println(customer);
+            });
+        } catch (Exception e) {
+            System.out.println("Find failed");
+        }
+    }
+
 }

@@ -70,4 +70,18 @@ public class FormUseService {
     }
 
 
+    public void findFormUseByNameForm() {
+        Scanner scanner = new Scanner(System.in);
+        try {
+            System.out.println("Request enter name of form use you want find: ");
+            String name = scanner.nextLine();
+            InitDatabaseService.formUseDatabase.getMaps().forEach((key, value) -> {
+                FormUse formUse = (FormUse) value;
+                if (formUse.getNameForm().equals(name.trim())) System.out.println(formUse);
+            });
+        } catch (Exception e) {
+            System.out.println("Find failed");
+        }
+    }
+
 }

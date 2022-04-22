@@ -74,5 +74,20 @@ public class BranchService {
         }
     }
 
+    public void findBranchByName() {
+        Scanner scanner = new Scanner(System.in);
+        try {
+            System.out.print("Request enter name of branch you want find: ");
+            String name = scanner.nextLine();
+            InitDatabaseService.branchDatabase.getMaps().forEach((key, value) -> {
+                Branch branch = (Branch) value;
+                if (branch.getNameBranch().equals(name.trim())) {
+                    System.out.println(branch);
+                }
+            });
+        } catch (Exception e) {
+            System.out.println("Find failed");
+        }
+    }
 
 }

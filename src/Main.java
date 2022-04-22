@@ -8,7 +8,8 @@ public class Main {
     public static void main(String[] args) {
         InitDatabaseService.initData();
         Main main = new Main();
-        main = main.mainMenu(main);
+        main.mainMenu(main);
+//        main = main.mainMenu(main);
         System.out.println("Application has been shut down");
     }
 
@@ -22,7 +23,8 @@ public class Main {
             System.out.println("[3] Manage form use");
             System.out.println("[4] Manage contract");
             System.out.println("[5] Manage electric meter");
-            System.out.println("[6] Exit");
+            System.out.println("[6] Manage note book");
+            System.out.println("[7] Exit");
 
 
             System.out.print("Insert selection: ");
@@ -41,6 +43,8 @@ public class Main {
                 case 5:
                     return main.menuElectricMeter(main);
                 case 6:
+                    return main.menuNoteBook(main);
+                case 7:
                     cont = false;
                     break;
                 default:
@@ -64,8 +68,9 @@ public class Main {
                             " ------- Func 2:  Add branch \n " +
                             " ------- Func 3:  Delete branch\n " +
                             " ------- Func 4:  Update branch\n " +
-                            " ------- Func 5:  Find branch\n " +
-                            " ------- Func 6:  Go back\n ");
+                            " ------- Func 5:  Find branch by ID\n " +
+                            " ------- Func 6:  Find branch by nameBranch\n " +
+                            " ------- Func 7:  Go back\n ");
             System.out.print("Insert selection: ");
             selection = scanner.nextInt();
 
@@ -87,11 +92,14 @@ public class Main {
                     branchService.findBranchbyId();
                     break;
                 case 6:
+                    branchService.findBranchByName();
+                    break;
+                case 7:
                     return main.mainMenu(main);
                 default:
                     System.out.println("The selection was invalid!");
             }
-        } while (selection != 7);
+        } while (selection != 8);
         return main;
     }
 
@@ -108,8 +116,9 @@ public class Main {
                             " ------- Func 2:  Add form use \n " +
                             " ------- Func 3:  Delete form use\n " +
                             " ------- Func 4:  Update form use\n " +
-                            " ------- Func 5:  Find form use\n " +
-                            " ------- Func 6:  Go back\n ");
+                            " ------- Func 5:  Find form use by id\n " +
+                            " ------- Func 6:  Find form use by nameForm\n " +
+                            " ------- Func 7:  Go back\n ");
             System.out.print("Insert selection: ");
             selection = scanner.nextInt();
             System.out.println("\n--------------------------------------------------------------------");
@@ -130,11 +139,14 @@ public class Main {
                     formUseService.findFormUse();
                     break;
                 case 6:
+                    formUseService.findFormUseByNameForm();
+                    break;
+                case 7:
                     return main.mainMenu(main);
                 default:
                     System.out.println("The selection was invalid!");
             }
-        } while (selection != 7);
+        } while (selection != 8);
         return main;
     }
 
@@ -151,8 +163,9 @@ public class Main {
                             " ------- Func 2:  Add customer \n " +
                             " ------- Func 3:  Delete customer\n " +
                             " ------- Func 4:  Update customer\n " +
-                            " ------- Func 5:  Find customer\n " +
-                            " ------- Func 6:  Go back\n ");
+                            " ------- Func 5:  Find customer by ID\n " +
+                            " ------- Func 6:  Find customer by Name\n " +
+                            " ------- Func 7:  Go back\n ");
             System.out.print("Insert selection: ");
             selection = scanner.nextInt();
             System.out.println("\n--------------------------------------------------------------------");
@@ -173,11 +186,14 @@ public class Main {
                     customerService.checkInfoCustomer();
                     break;
                 case 6:
+                    customerService.findCustomerByName();
+                    break;
+                case 7:
                     return main.mainMenu(main);
                 default:
                     System.out.println("The selection was invalid!");
             }
-        } while (selection != 7);
+        } while (selection != 8);
         return main;
     }
 
@@ -237,8 +253,9 @@ public class Main {
                             " ------- Func 2:  Add electric meter \n " +
                             " ------- Func 3:  Delete electric meter\n " +
                             " ------- Func 4:  Update electric meter\n " +
-                            " ------- Func 5:  Find electric meter\n " +
-                            " ------- Func 6:  Go back\n ");
+                            " ------- Func 5:  Find electric meter by ID\n " +
+                            " ------- Func 6:  Find electric meter by type\n " +
+                            " ------- Func 7:  Go back\n ");
             System.out.print("Insert selection: ");
             selection = scanner.nextInt();
             System.out.println("\n--------------------------------------------------------------------");
@@ -259,11 +276,48 @@ public class Main {
                     electricMeterService.findInfoElectricMeter();
                     break;
                 case 6:
+                    electricMeterService.findElectricMeterByType();
+                    break;
+                case 7:
                     return main.mainMenu(main);
                 default:
                     System.out.println("The selection was invalid!");
             }
-        } while (selection != 7);
+        } while (selection != 8);
+        return main;
+    }
+
+    private Main menuNoteBook(Main main) {
+        NoteBookService noteBookService = new NoteBookService();
+
+        System.out.println("-------------------------------------------------------------------- \n" + "Welcome to the function of notebook: ");
+        int selection;
+
+        do {
+            System.out.println(
+                    "  ------- Func 1:  Get all record of notebook \n " +
+                            " ------- Func 2:  Add  record in notebook \n " +
+                            " ------- Func 3:  Find record in notebook\n " +
+                            " ------- Func 7:  Go back\n ");
+            System.out.print("Insert selection: ");
+            selection = scanner.nextInt();
+            System.out.println("\n--------------------------------------------------------------------");
+            switch (selection) {
+                case 1:
+                    noteBookService.getAllRecordNoteBook();
+                    break;
+                case 2:
+                    noteBookService.addNoteBook();
+                    break;
+                case 3:
+                    noteBookService.findNoteBook();
+                    break;
+                case 7:
+                    return main.mainMenu(main);
+                default:
+                    System.out.println("The selection was invalid!");
+            }
+        } while (selection != 8);
         return main;
     }
 }
