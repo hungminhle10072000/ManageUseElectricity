@@ -5,7 +5,7 @@ import com.hdh.model.*;
 
 import java.util.Calendar;
 
-public  class InitDatabaseService {
+public class InitDatabaseService {
     public static BranchDatabase branchDatabase = new BranchDatabase();
     public static FormUseDatabase formUseDatabase = new FormUseDatabase();
 
@@ -17,6 +17,7 @@ public  class InitDatabaseService {
 
 
     public static NoteBookDatabase noteBookDatabase = new NoteBookDatabase();
+    public static InvoiceDatabase invoiceDatabase = new InvoiceDatabase();
 
     public static void initData() {
         Calendar c1 = Calendar.getInstance();
@@ -38,6 +39,9 @@ public  class InitDatabaseService {
 
         electricMeterDatabase.getMaps().put(1, new ElectricMeter(1, "Điện 1 chiều", (Contract) contractDatabase.getMaps().get(1)));
         electricMeterDatabase.getMaps().put(2, new ElectricMeter(2, "Điện 2 chiều", (Contract) contractDatabase.getMaps().get(2)));
+
+        noteBookDatabase.getListNoteBook().add(new NoteBook(20, (ElectricMeter) InitDatabaseService.electricMeterDatabase.findById(1), c1.getTime()));
+        noteBookDatabase.getListNoteBook().add(new NoteBook(30, (ElectricMeter) InitDatabaseService.electricMeterDatabase.findById(2), c1.getTime()));
 
     }
 

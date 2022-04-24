@@ -2,9 +2,9 @@ package com.hdh.model;
 
 import java.util.Date;
 
-public class Invoice {
+public class Invoice implements BaseModel {
 
-    private long id;
+    private int id;
 
     private double totalMoney;
 
@@ -16,23 +16,16 @@ public class Invoice {
 
     private NoteBook noteBook;
 
-    public Invoice(long id, double totalMoney, Date dateFrom, Date dateEnd, boolean status, NoteBook noteBook) {
-        this.id = id;
-        this.totalMoney = totalMoney;
-        this.dateFrom = dateFrom;
-        this.dateEnd = dateEnd;
-        this.status = status;
-        this.noteBook = noteBook;
-    }
 
     public Invoice() {
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    @Override
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -74,5 +67,20 @@ public class Invoice {
 
     public void setNoteBook(NoteBook noteBook) {
         this.noteBook = noteBook;
+    }
+
+    @Override
+    public String toString() {
+//        2*java.lang.Integer.valueOf(1+java.lang.String.format("%0"+5+"d",0))
+        String statusPay = status ? "Đã thanh toán" : "Chưa thanh toán";
+        return "Invoice{" +
+                "idInvoice=" + id +
+                ", totalMoney=" + totalMoney +
+                ", dateFrom=" + dateFrom +
+                ", dateEnd=" + dateEnd +
+                ", customer=" + noteBook.getElectricMeter().getContract().getCustomer().getName() +
+                ", electric=" + noteBook.getElectricMeter().getId() +
+                ", status=" + statusPay +
+                '}';
     }
 }

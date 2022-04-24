@@ -2,9 +2,7 @@ package com.hdh.service;
 
 import com.hdh.model.*;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Scanner;
+import java.util.*;
 
 public class NoteBookService {
 
@@ -33,6 +31,7 @@ public class NoteBookService {
 
         Calendar c1 = Calendar.getInstance();
         Date dateWrite = c1.getTime();
+        dateWrite.setMonth(dateWrite.getMonth() + 1);
         System.out.print("Request enter index of electric meter: ");
         double indexElectric = scanner.nextDouble();
 
@@ -47,6 +46,15 @@ public class NoteBookService {
         System.out.print("Request enter index of electric meter: ");
         NoteBook noteBook = new NoteBook(0, electricMeter, dateWrite);
         InitDatabaseService.noteBookDatabase.createNoteBook(noteBook);
+    }
+
+    public NoteBook noteBookFindMonthYear(ElectricMeter electricMeter, int month, int year) {
+        for (NoteBook noteBook : InitDatabaseService.noteBookDatabase.getListNoteBook()) {
+            if (noteBook.getElectricMeter().equals(electricMeter) && month == (noteBook.getDateWrite().getMonth() + 1) && year == (noteBook.getDateWrite().getYear() + 1900)) {
+                return noteBook;
+            }
+        }
+        return null;
     }
 
     public void findNoteBook() {

@@ -1,5 +1,8 @@
+import com.hdh.model.ElectricMeter;
+import com.hdh.model.NoteBook;
 import com.hdh.service.*;
 
+import java.util.Calendar;
 import java.util.Scanner;
 
 public class Main {
@@ -9,7 +12,6 @@ public class Main {
         InitDatabaseService.initData();
         Main main = new Main();
         main.mainMenu(main);
-//        main = main.mainMenu(main);
         System.out.println("Application has been shut down");
     }
 
@@ -24,7 +26,8 @@ public class Main {
             System.out.println("[4] Manage contract");
             System.out.println("[5] Manage electric meter");
             System.out.println("[6] Manage note book");
-            System.out.println("[7] Exit");
+            System.out.println("[7] Manage invoie");
+            System.out.println("[8] Exit");
 
 
             System.out.print("Insert selection: ");
@@ -45,6 +48,8 @@ public class Main {
                 case 6:
                     return main.menuNoteBook(main);
                 case 7:
+                    return main.menuInvoice(main);
+                case 8:
                     cont = false;
                     break;
                 default:
@@ -52,6 +57,43 @@ public class Main {
             }
 
         } while (cont);
+        return main;
+    }
+
+    private Main menuInvoice(Main main) {
+        System.out.println("-------------------------------------------------------------------- \n" + "Welcome to the function of invoice: ");
+
+        int selection;
+
+        InvoiceService invoiceService = new InvoiceService();
+        do {
+            System.out.println(
+                    "  ------- Func 1:  Issue an invoice \n " +
+                            "  ------- Func 2:  Get all invoice by month and year \n " +
+                            "  ------- Func 3:  Update status of invoice \n " +
+                            "  ------- Func 4:  Find invoice \n " +
+                            " ------- Func 7:  Go back\n ");
+            System.out.print("Insert selection: ");
+            selection = scanner.nextInt();
+            switch (selection) {
+                case 1:
+                    invoiceService.issueAnInvoice();
+                    break;
+                case 2:
+                    invoiceService.getAllInvoiceMonthYear();
+                    break;
+                case 3:
+                    invoiceService.updateStatus();
+                    break;
+                case 4:
+                    invoiceService.findInvoice();
+                    break;
+                case 7:
+                    return main.mainMenu(main);
+                default:
+                    System.out.println("The selection was invalid!");
+            }
+        } while (selection != 8);
         return main;
     }
 
