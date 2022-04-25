@@ -31,13 +31,24 @@ public class NoteBookService {
 
         Calendar c1 = Calendar.getInstance();
         Date dateWrite = c1.getTime();
-        dateWrite.setMonth(dateWrite.getMonth() + 1);
+//        dateWrite.setMonth(dateWrite.getMonth() + 1);
+
+        int month = dateWrite.getMonth() + 1;
+        int year = dateWrite.getYear() + 1900;
+        NoteBook noteBookCheck = noteBookFindMonthYear(electricMeter, month, year); /// để test, sau month - 1
+
         System.out.print("Request enter index of electric meter: ");
         double indexElectric = scanner.nextDouble();
 
+        if (noteBookCheck != null) {
+            while (indexElectric < noteBookCheck.getIndex()) {
+                System.out.print("Request to re-enter the index of electric: ");
+                indexElectric = scanner.nextInt();
+            }
+        }
+        dateWrite.setMonth(dateWrite.getMonth() + 1);  /// để test, sau comment
         NoteBook noteBook = new NoteBook(indexElectric, electricMeter, dateWrite);
         InitDatabaseService.noteBookDatabase.createNoteBook(noteBook);
-
     }
 
     public void updateNoteBook() {

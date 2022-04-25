@@ -68,7 +68,7 @@ public class Main {
         InvoiceService invoiceService = new InvoiceService();
         do {
             System.out.println(
-                    "  ------- Func 1:  Issue an invoice \n " +
+                    "  ------- Func 1:  Export invoice \n " +
                             "  ------- Func 2:  Get all invoice by month and year \n " +
                             "  ------- Func 3:  Update status of invoice \n " +
                             "  ------- Func 4:  Find invoice \n " +

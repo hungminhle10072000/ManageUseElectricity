@@ -4,33 +4,6 @@ import java.util.Date;
 import java.util.List;
 
 public class NoteBook {
-
-
-//    private int idElectricMeter;
-
-
-
-    /*    private List<ElectricMeter> electricMeters;*/
-
-
-//    public int getIdElectricMeter() {
-//        return idElectricMeter;
-//    }
-
-//    public void setIdElectricMeter(int idElectricMeter) {
-//        this.idElectricMeter = idElectricMeter;
-//    }
-
-
-//    public List<ElectricMeter> getElectricMeters() {
-//        return electricMeters;
-//    }
-
-//    public void setElectricMeters(List<ElectricMeter> electricMeters) {
-//        this.electricMeters = electricMeters;
-//    }
-
-
     private double index;
 
     private ElectricMeter electricMeter;

@@ -31,6 +31,7 @@ public class InvoiceService {
                             invoiceUpdate.setDateEnd(noteBookCurrent.getDateWrite());
                             invoiceUpdate.setTotalMoney((noteBookCurrent.getIndex() - noteBookLast.getIndex()) * unitPrice);
                             invoiceUpdate.setStatus(false);
+                            invoiceUpdate.setTotalIndex(noteBookCurrent.getIndex() - noteBookLast.getIndex());
                             InitDatabaseService.invoiceDatabase.getMaps().put(idInvoiceCheck, invoiceUpdate);
                         } else {
                             invoiceAdd.setDateFrom(noteBookLast.getDateWrite());
@@ -38,6 +39,7 @@ public class InvoiceService {
                             invoiceAdd.setStatus(false);
                             invoiceAdd.setNoteBook(noteBookCurrent);
                             invoiceAdd.setTotalMoney((noteBookCurrent.getIndex() - noteBookLast.getIndex()) * unitPrice);
+                            invoiceAdd.setTotalIndex(noteBookCurrent.getIndex() - noteBookLast.getIndex());
                             InitDatabaseService.invoiceDatabase.create(invoiceAdd);
                         }
                     }
@@ -46,7 +48,6 @@ public class InvoiceService {
     }
 
     public int checkExistInvoice(NoteBook noteBookLast, ElectricMeter electricMeter) {
-        System.out.println(InitDatabaseService.invoiceDatabase.getMaps().toString());
         Set<Integer> keySet = InitDatabaseService.invoiceDatabase.getMaps().keySet();
         for (Integer key : keySet) {
             Invoice invoice = (Invoice) InitDatabaseService.invoiceDatabase.getMaps().get(key);

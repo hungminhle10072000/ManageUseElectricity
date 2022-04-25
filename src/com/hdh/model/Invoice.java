@@ -1,5 +1,6 @@
 package com.hdh.model;
 
+import java.text.DecimalFormat;
 import java.util.Date;
 
 public class Invoice implements BaseModel {
@@ -16,6 +17,15 @@ public class Invoice implements BaseModel {
 
     private NoteBook noteBook;
 
+    private double totalIndex;
+
+    public double getTotalIndex() {
+        return totalIndex;
+    }
+
+    public void setTotalIndex(double totalIndex) {
+        this.totalIndex = totalIndex;
+    }
 
     public Invoice() {
     }
@@ -69,18 +79,35 @@ public class Invoice implements BaseModel {
         this.noteBook = noteBook;
     }
 
+//    @Override
+//    public String toString() {
+//        String statusPay = status ? "Paid" : "Unpaid";
+//        String pattern = "###,###,### VNĐ";
+//        DecimalFormat decimalFormat = new DecimalFormat(pattern);
+//        return "Invoice{" +
+//                "idInvoice=" + id +
+//                ", totalMoney=" + decimalFormat.format(totalMoney) +
+//                ", dateFrom=" + dateFrom +
+//                ", dateEnd=" + dateEnd +
+//                ", customer=" + noteBook.getElectricMeter().getContract().getCustomer().getName() +
+//                ", electric=" + noteBook.getElectricMeter().getId() +
+//                ", status=" + statusPay +
+//                '}';
+//    }
+
     @Override
     public String toString() {
-//        2*java.lang.Integer.valueOf(1+java.lang.String.format("%0"+5+"d",0))
-        String statusPay = status ? "Đã thanh toán" : "Chưa thanh toán";
+        String statusPay = status ? "Paid" : "Unpaid";
+        String pattern = "###,###,### VNĐ";
+        DecimalFormat decimalFormat = new DecimalFormat(pattern);
         return "Invoice{" +
-                "idInvoice=" + id +
-                ", totalMoney=" + totalMoney +
+                "totalMoney=" + decimalFormat.format(totalMoney) +
                 ", dateFrom=" + dateFrom +
                 ", dateEnd=" + dateEnd +
+                ", status=" + statusPay +
                 ", customer=" + noteBook.getElectricMeter().getContract().getCustomer().getName() +
                 ", electric=" + noteBook.getElectricMeter().getId() +
-                ", status=" + statusPay +
-                '}';
+                ", totalIndex=" + totalIndex + " Kwh" +
+        '}';
     }
 }
