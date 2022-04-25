@@ -72,6 +72,7 @@ public class Main {
                             "  ------- Func 2:  Get all invoice by month and year \n " +
                             "  ------- Func 3:  Update status of invoice \n " +
                             "  ------- Func 4:  Find invoice \n " +
+//                            "  ------- Func 5:  Delete invoice \n " +
                             " ------- Func 7:  Go back\n ");
             System.out.print("Insert selection: ");
             selection = scanner.nextInt();
@@ -87,6 +88,9 @@ public class Main {
                     break;
                 case 4:
                     invoiceService.findInvoice();
+                    break;
+                case 5:
+                    invoiceService.deleteInvoice();
                     break;
                 case 7:
                     return main.mainMenu(main);
@@ -338,8 +342,10 @@ public class Main {
         do {
             System.out.println(
                     "  ------- Func 1:  Get all record of notebook \n " +
-                            " ------- Func 2:  Add  record in notebook \n " +
-                            " ------- Func 3:  Find record in notebook\n " +
+                            " ------- Func 2:  Add  record of notebook \n " +
+                            " ------- Func 3:  Find record of notebook\n " +
+                            " ------- Func 4:  Update record of notebook\n " +
+                            " ------- Func 5:  Delete record of notebook\n " +
                             " ------- Func 7:  Go back\n ");
             System.out.print("Insert selection: ");
             selection = scanner.nextInt();
@@ -353,6 +359,12 @@ public class Main {
                     break;
                 case 3:
                     noteBookService.findNoteBook();
+                    break;
+                case 4:
+                    noteBookService.updateNoteBook();
+                    break;
+                case 5:
+                    noteBookService.deleteRecordNoteBook();
                     break;
                 case 7:
                     return main.mainMenu(main);

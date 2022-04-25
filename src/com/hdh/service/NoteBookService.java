@@ -40,6 +40,96 @@ public class NoteBookService {
 
     }
 
+    public void updateNoteBook() {
+        Scanner scanner = new Scanner(System.in);
+        ElectricMeter electricMeter;
+
+        System.out.println("Request enter id of electric meter");
+        int idElectric = scanner.nextInt();
+
+        do {
+            electricMeter = (ElectricMeter) InitDatabaseService.electricMeterDatabase.findById(idElectric);
+            if (electricMeter == null) {
+                System.out.println("No exists electric meter with id: " + idElectric);
+                System.out.println("Request enter id of electric meter");
+                idElectric = scanner.nextInt();
+            }
+        } while (electricMeter == null);
+
+        System.out.println("Request enter month: ");
+        int month = scanner.nextInt();
+        System.out.println("Request enter year: ");
+        int year = scanner.nextInt();
+
+
+        NoteBook noteBookUpdate = null;
+
+        for (NoteBook noteBook : InitDatabaseService.noteBookDatabase.getListNoteBook()) {
+            if (noteBook.getDateWrite().getMonth() + 1 == month && noteBook.getDateWrite().getYear() + 1900 == year && noteBook.getElectricMeter().equals(electricMeter)) {
+                noteBookUpdate = noteBook;
+            }
+        }
+        if (noteBookUpdate == null) {
+            System.out.println("Not found notebook");
+        } else {
+            System.out.println("Value of notebook before update: " + noteBookUpdate.toString());
+            System.out.println("Enter value index if you want update or enter -1 if you want to skip: ");
+            int select = scanner.nextInt();
+            if (select != -1) {
+                try {
+                    int pos = InitDatabaseService.noteBookDatabase.getListNoteBook().indexOf(noteBookUpdate);
+                    noteBookUpdate.setIndex(select);
+                    noteBookUpdate.setDateWrite(Calendar.getInstance().getTime());
+                    InitDatabaseService.noteBookDatabase.getListNoteBook().set(pos, noteBookUpdate);
+                    System.out.println("Update Success");
+                    System.out.println("Value of notebook after update: ");
+                    System.out.println(noteBookUpdate.toString());
+                } catch (Exception e) {
+                    System.out.println("Update failed");
+                }
+            }
+        }
+    }
+
+    public void deleteRecordNoteBook() {
+        Scanner scanner = new Scanner(System.in);
+        ElectricMeter electricMeter;
+
+        System.out.println("Request enter id of electric meter");
+        int idElectric = scanner.nextInt();
+        do {
+            if (idElectric == -1) {
+                return;
+            }
+            electricMeter = (ElectricMeter) InitDatabaseService.electricMeterDatabase.findById(idElectric);
+            if (electricMeter == null) {
+                System.out.println("No exists electric meter with id: " + idElectric);
+                System.out.println("Request enter id of electric meter or -1 to exit: ");
+                idElectric = scanner.nextInt();
+            }
+        } while (electricMeter == null);
+
+        System.out.println("Request enter month: ");
+        int month = scanner.nextInt();
+        System.out.println("Request enter year: ");
+        int year = scanner.nextInt();
+        System.out.println("Request enter index of electric meter: ");
+        double indexElectric = scanner.nextDouble();
+        try {
+            for (NoteBook noteBook : InitDatabaseService.noteBookDatabase.getListNoteBook()) {
+                if (noteBook.getDateWrite().getMonth() + 1 == month && noteBook.getDateWrite().getYear() + 1900 == year && noteBook.getIndex() == indexElectric
+                        && noteBook.getElectricMeter().equals(electricMeter)) {
+                    InitDatabaseService.noteBookDatabase.getListNoteBook().remove(noteBook);
+                    System.out.println("Delete success");
+                    return;
+                }
+            }
+            System.out.println("Not found record of notebook");
+        } catch (Exception e) {
+            System.out.println("Delete failed");
+        }
+    }
+
     public static void autoAdd(ElectricMeter electricMeter) {
         Calendar c1 = Calendar.getInstance();
         Date dateWrite = c1.getTime();
