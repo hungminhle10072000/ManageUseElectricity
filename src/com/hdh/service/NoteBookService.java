@@ -144,7 +144,7 @@ public class NoteBookService {
     public static void autoAdd(ElectricMeter electricMeter) {
         Calendar c1 = Calendar.getInstance();
         Date dateWrite = c1.getTime();
-        System.out.print("Request enter index of electric meter: ");
+//        System.out.print("Request enter index of electric meter: ");
         NoteBook noteBook = new NoteBook(0, electricMeter, dateWrite);
         InitDatabaseService.noteBookDatabase.createNoteBook(noteBook);
     }

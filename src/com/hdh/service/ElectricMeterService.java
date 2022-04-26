@@ -21,7 +21,7 @@ public class ElectricMeterService {
                     System.out.print("Request enter id of contract: ");
                     idContract = scanner.nextInt();
                 } else {
-                    System.out.print("Request enter typeElectricMeter: ");
+                    System.out.println("Request enter typeElectricMeter: ");
                     scanner.nextLine();
                     String typeElectricMeter = scanner.nextLine();
                     ElectricMeter electricMeterAdd = new ElectricMeter(typeElectricMeter, contract);
@@ -59,6 +59,7 @@ public class ElectricMeterService {
         try {
             System.out.print("Request enter id of electric meter want delete: ");
             int idDelete = scanner.nextInt();
+            scanner.nextLine();
             ElectricMeter electricMeter = (ElectricMeter) InitDatabaseService.electricMeterDatabase.findById(idDelete);
             if (electricMeter != null) {
                 InitDatabaseService.electricMeterDatabase.deleteById(idDelete);
