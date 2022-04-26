@@ -47,8 +47,18 @@ public class NoteBookService {
             }
         }
         dateWrite.setMonth(dateWrite.getMonth() + 1);  /// để test, sau comment
-        NoteBook noteBook = new NoteBook(indexElectric, electricMeter, dateWrite);
-        InitDatabaseService.noteBookDatabase.createNoteBook(noteBook);
+
+        NoteBook noteBookExist = checkExistNoteBook(electricMeter);
+
+        if (noteBookExist == null) {
+            NoteBook noteBook = new NoteBook(indexElectric, electricMeter, dateWrite);
+            InitDatabaseService.noteBookDatabase.createNoteBook(noteBook);
+        } else {
+            noteBookExist.setIndex(indexElectric);
+            noteBookExist.setDateWrite(dateWrite);
+            int pos = InitDatabaseService.noteBookDatabase.getListNoteBook().indexOf(noteBookExist);
+            InitDatabaseService.noteBookDatabase.getListNoteBook().set(pos, noteBookExist);
+        }
     }
 
     public void updateNoteBook() {
@@ -194,6 +204,21 @@ public class NoteBookService {
             System.out.println("Not found record!!!");
         }
 
+    }
+
+    public NoteBook checkExistNoteBook(ElectricMeter electricMeter) {
+        for (NoteBook noteBook : InitDatabaseService.noteBookDatabase.getListNoteBook()) {
+            int monthNotebook = noteBook.getDateWrite().getMonth() + 1;
+            int yearNoteBook = noteBook.getDateWrite().getYear() + 1900;
+
+            int monthCheck = Calendar.getInstance().getTime().getMonth() + 2;/// Để check
+            int yearCheck = Calendar.getInstance().getTime().getYear() + 1900;
+
+            if (noteBook.getElectricMeter().equals(electricMeter) && monthNotebook == monthCheck && yearNoteBook == yearCheck) {
+                return noteBook;
+            }
+        }
+        return null;
     }
 
 }
